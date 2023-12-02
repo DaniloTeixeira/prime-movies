@@ -1,3 +1,15 @@
+/* Tailwind */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* PrimeNG */
+// @import "primeng/resources/themes/lara-light-blue/theme.css";
+// @import "primeng/resources/primeng.css";
+
+/* PrimeIcons */
+// @import "primeicons/primeicons.css";
+
 * {
     box-sizing: border-box;
     margin: 0;
