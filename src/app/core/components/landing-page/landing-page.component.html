@@ -6,7 +6,7 @@
                 Unleash the Power, Feel the Vibranium, and Witness Heroes Assemble in the Epic Marvel Cinematic
                 Universe.
             </p>
-            <a class="font-bold uppercase" color="warn" target="_blank" mat-stroked-button
+            <a class="font-bold uppercase m-5" color="warn" target="_blank" mat-stroked-button
                 href="https://www.marvel.com/teams-and-groups/avengers">
                 Visit the Official Website
             </a>
@@ -26,7 +26,7 @@
                     Behind-the-Scenes Marvels of Guardians of the Galaxy <br />
                     From Improvised Dances to Real Raccoon Inspirations and Groot's Thousand Voices
                 </p>
-                <a class="font-bold uppercase" color="warn" target="_blank" mat-stroked-button
+                <a class="font-bold uppercase m-5" color="warn" target="_blank" mat-stroked-button
                     href="https://www.marvel.com/movies/guardians-of-the-galaxy-volume-3">
                     Visit the Official Website
                 </a>
@@ -60,7 +60,7 @@
                 <p class="m-5">
                     Discover Clues, Deceptions, and a Whodunit Thrill Ride in this Modern Murder Mystery Masterpiece.
                 </p>
-                <a class="font-bold uppercase" color="warn" target="_blank" mat-stroked-button
+                <a class="font-bold uppercase mt-5" color="warn" target="_blank" mat-stroked-button
                     href="https://www.lionsgate.com/movies/knives-out">
                     Visit the Official Website
                 </a>
@@ -75,12 +75,13 @@
                     Click in the box below, to {{ showSpoiler ? 'hide' : 'reveal' }} the plot twist
                 </h2>
             </div>
-            <div class="flex items-center justify-center text-white max-w-[1000px] border-2 border-white rounded-lg cursor-pointer">
-                <p 
-                class="p-5" 
-                [ngClass]="showSpoiler ? 'bg-transparent' : 'bg-white'"
-                (click)="toggleShowSpoiler()">
-                    In "Knives Out," the plot twist reveals that Harlan Thrombey faked his own death to expose his family's deception. Detective Benoit Blanc uncovers the intricate scheme, turning the conventional murder mystery narrative on its head. The twist not only showcases Rian Johnson's storytelling brilliance but also adds layers of complexity to this modern whodunit.
+            <div
+                class="flex items-center justify-center text-white max-w-[1000px] border-2 border-white rounded-lg cursor-pointer">
+                <p class="p-5" [ngClass]="showSpoiler ? 'bg-transparent' : 'bg-white'" (click)="toggleShowSpoiler()">
+                    In "Knives Out," the plot twist reveals that Harlan Thrombey faked his own death to expose his
+                    family's deception. Detective Benoit Blanc uncovers the intricate scheme, turning the conventional
+                    murder mystery narrative on its head. The twist not only showcases Rian Johnson's storytelling
+                    brilliance but also adds layers of complexity to this modern whodunit.
                 </p>
             </div>
         </div>
@@ -108,5 +109,25 @@
 </section>
 
 <section class="bg-img bg-tenet">
-
+    <div class="h-full w-full flex items-center justify-center flex-col ">
+        <div class="text-white mb-5 w-1/2 text-center">
+            <h1 class="text-7xl pb-5 font-bold border-b-2">
+                Unlock the Enigma: Journey into Tenet
+            </h1>
+            <p class="mt-5 mb-2"> 
+                Experience the Mind-Bending Thrill Ride of Christopher Nolan's Epic Masterpiece.
+            </p>
+            <div class="text-center">
+                <h2 class="text-5xl font-bold mt-32 mb-5">Curiosity!</h2>
+                <p>
+                    Did you know that the term "Tenet" is a palindrome, reflecting the film's intricate theme of time
+                    inversion? Explore the hidden layers of this cinematic puzzle and unravel the mysteries within.
+                </p>
+            </div>
+            <a class="font-bold uppercase mt-10" color="warn" target="_blank" mat-stroked-button
+                href="https://www.warnerbros.com/movies/tenet">
+                Visit the Official Website
+            </a>
+        </div>
+    </div>
 </section>
