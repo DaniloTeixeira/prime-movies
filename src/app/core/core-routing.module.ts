@@ -9,7 +9,7 @@ const routes: Routes = [
     component: LandingPageComponent
   },
   {
-    path: ' list',
+    path: 'list',
     component: MovieListComponent
   }
 ];
