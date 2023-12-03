@@ -5,29 +5,38 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
-import { LandingPageComponent } from './components/landing-page';
-import { NavComponent } from './components/nav/nav.component';
+import { FooterComponent } from './components/footer';
+import { HeaderComponent } from './components/header';
+import { InfinityStonesComponent } from './components/infinity-stones';
 import { CoreRoutingModule } from './core-routing.module';
-import { HomeComponent } from './pages/home';
+import { LandingPageComponent } from './pages/landing-page';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { NotFoundComponent } from './pages/not-found';
 
-
+const COMPONENTS = [
+  HeaderComponent,
+  FooterComponent,
+  NotFoundComponent,
+  MovieListComponent,
+  LandingPageComponent,
+  InfinityStonesComponent,
+];
 @NgModule({
   declarations: [
-    NotFoundComponent,
-    HomeComponent,
-    LandingPageComponent,
-    NavComponent
+    ...COMPONENTS,
   ],
   imports: [
     CommonModule,
     CoreRoutingModule,
 
-    MatToolbarModule,
+    MatCardModule,
     MatIconModule,
     MatButtonModule,
-    MatCardModule
-  ]
+    MatToolbarModule,
+    MatTooltipModule
+  ],
+  exports: [...COMPONENTS]
 })
 export class CoreModule {}

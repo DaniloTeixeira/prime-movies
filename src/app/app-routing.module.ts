@@ -6,15 +6,19 @@ const routes: Routes = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'home'
+    redirectTo: 'movies'
   },
   {
-    path: 'home',
+    path: 'movies',
     loadChildren: () => import('./core/core.module').then((m) => m.CoreModule)
   },
   {
-    path: '**',
+    path: 'not-found',
     component: NotFoundComponent
+  },
+  {
+    path: '**',
+    redirectTo: 'not-found'
   }
 ];
 

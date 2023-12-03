@@ -1,1 +1,15 @@
-<router-outlet/>
+<div class="flex flex-col justify-between" #pageTop>
+    <app-header *ngIf="shouldShowHeaderAndFooter" />
+
+    <main>
+        <router-outlet />
+    </main>
+
+    <app-footer *ngIf="shouldShowHeaderAndFooter" />
+</div>
+
+<div class="relative" *ngIf="shouldScrollToTopIcon">
+    <button class="fixed bottom-10 right-10" mat-fab color="primary" (click)="onScrollToTop()">
+        <mat-icon class="text-white">arrow_upward</mat-icon>
+    </button>
+</div>
