@@ -6,4 +6,6 @@ export interface Movie {
     genre: string[];
     releasedDate: string;
     trailerLink: string;
+    thumbnail: string;
+    alt?: string;
 }

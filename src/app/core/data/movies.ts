@@ -8,7 +8,9 @@ export const MOVIES: Movie[] = [
         duration: '2h 30 min',
         genre: ['Action', 'Sci-Fi'],
         releasedDate: '3 September 2020',
-        trailerLink: 'https://www.youtube.com/watch?v=LdOM0x0XDMo'
+        trailerLink: 'https://www.youtube.com/watch?v=LdOM0x0XDMo',
+        thumbnail: 'assets/images/thumbnail/tenet.png',
+        alt: 'poster of the movie tenet'
     },
 
     {
@@ -18,7 +20,9 @@ export const MOVIES: Movie[] = [
         duration: '1h 57min',
         genre: ['Action', 'Animation', 'Adventure1'],
         releasedDate: '14 December 2018',
-        trailerLink: 'https://www.youtube.com/watch?v=tg52up16eq0'
+        trailerLink: 'https://www.youtube.com/watch?v=tg52up16eq0',
+        thumbnail: 'assets/images/thumbnail/spider-man.png',
+        alt: 'poster of the movie spider-man into the spider-verse'
     },
 
     {
@@ -28,7 +32,9 @@ export const MOVIES: Movie[] = [
         duration: '2h 10min',
         genre: ['Comedy', 'Crime', 'Drama'],
         releasedDate: '27 November 2019',
-        trailerLink: 'https://www.youtube.com/watch?v=qGqiHJTsRkQ'
+        trailerLink: 'https://www.youtube.com/watch?v=qGqiHJTsRkQ',
+        thumbnail: 'assets/images/thumbnail/knives-out.png',
+        alt: 'poster of the movie knives out'
     },
 
     {
@@ -38,7 +44,9 @@ export const MOVIES: Movie[] = [
         duration: '2h 1min',
         genre: ['Action', 'Adventure', 'Comedy'],
         releasedDate: '1 August 2014',
-        trailerLink: 'https://www.youtube.com/watch?v=d96cjJhvlMA'
+        trailerLink: 'https://www.youtube.com/watch?v=d96cjJhvlMA',
+        thumbnail: 'assets/images/thumbnail/guardians-of-the-galaxy.png',
+        alt: 'poster of the movie guardians of the galaxy'
     },
 
     {
@@ -48,6 +56,8 @@ export const MOVIES: Movie[] = [
         duration: '2h 21min',
         genre: ['Action', 'Adventure', 'Sci-Fi'],
         releasedDate: '1 May 2015',
-        trailerLink: 'https://www.youtube.com/watch?v=tmeOjFno6Do'
+        trailerLink: 'https://www.youtube.com/watch?v=tmeOjFno6Do',
+        thumbnail: 'assets/images/thumbnail/avengers.png',
+        alt: 'post of the file avengers, age of ultron'
     }
 ];

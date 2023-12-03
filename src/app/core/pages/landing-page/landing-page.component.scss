@@ -19,50 +19,50 @@
 }
 
 .bg-avengers {
-    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.6), var(--black)), url('../../../../assets/images/avengers-bg.jpg');
+    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.6), var(--black)), url('../../../../assets/images/background/avengers-bg.jpg');
 
     @media screen and (width < 800px) {
-        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.6), var(--black)), url('../../../../assets/images/avengers-mobile-bg.png');
+        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.6), var(--black)), url('../../../../assets/images/background/avengers-mobile-bg.png');
         background-size: cover;
 
     }
 }
 
 .bg-guardians {
-    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/guardians-of-the-galaxy-bg.jpg');
+    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/guardians-of-the-galaxy-bg.jpg');
     background-size: cover;
 
     @media screen and (width < 800px) {
-        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/guardians-of-galaxy-mobile-bg.jpg');
+        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/guardians-of-galaxy-mobile-bg.jpg');
         background-size: cover;
     }
 }
 
 .bg-knives {
-    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/knives-out-bg.jpg');
+    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/knives-out-bg.jpg');
     background-size: cover;
-    
+
 
     @media screen and (wdth < 800px) {
-        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/knives-out-mobile-bg.jpg');
+        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/knives-out-mobile-bg.jpg');
         background-size: cover;
     }
 }
 
 .bg-spider {
-    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/spider-man-bg.png');
+    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/spider-man-bg.png');
 
     @media screen and (width < 800px) {
-        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/spider-man-mobile-bg.jpg');
+        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/spider-man-mobile-bg.jpg');
     }
 }
 
 .bg-tenet {
-    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/tenet-bg.jpg');
+    background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/tenet-bg.jpg');
     background-size: cover;
 
     @media screen and (width < 800px) {
-        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/tenet-mobile-bg.jpeg');
+        background: linear-gradient(var(--black), rgba(0, 0, 0, 0.5), var(--black)), url('../../../../assets/images/background/tenet-mobile-bg.jpeg');
         background-size: cover;
     }
 }

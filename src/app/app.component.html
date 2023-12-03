@@ -1,5 +1,5 @@
 <div class="flex flex-col justify-between" #pageTop>
-    <app-header *ngIf="shouldShowHeaderAndFooter" />
+    <app-header [isMovieListPage]="isMovieListPage" *ngIf="shouldShowHeaderAndFooter" />
 
     <main>
         <router-outlet />

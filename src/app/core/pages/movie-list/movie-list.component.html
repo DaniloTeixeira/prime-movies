@@ -1,1 +1,15 @@
-<p>movie-list works!</p>
+<div class="wrapper">
+    <section class="flex gap-5" *ngFor="let movie of movies">
+        <div class="w-[400px] h-[550px] p-5">
+            <img class="w-full h-full  border-2 border-gray-800 rounded-md" [src]="movie.thumbnail" [alt]="movie.alt">
+        </div>
+        <div class="flex flex-col">
+            <div>
+                info
+            </div>
+            <div>
+                video
+            </div>
+        </div>
+    </section>
+</div>

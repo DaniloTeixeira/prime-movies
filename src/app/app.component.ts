@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, ViewChild, inject } from '@angular/core';
 import { ResolveEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 @Component({
@@ -7,6 +7,8 @@ import { filter } from 'rxjs';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  private router = inject(Router);
+
   @ViewChild('pageTop') pageTop!: ElementRef;
   @HostListener('window:scroll', ['$event'])
   onWindowsScroll() {
@@ -17,15 +19,22 @@ export class AppComponent {
 
   protected shouldScrollToTopIcon!: boolean;
   protected shouldShowHeaderAndFooter!: boolean;
-  constructor(private router: Router) {
-    this.router.events.pipe(filter(event => event instanceof ResolveEnd)).subscribe((e) => {
-      if (e instanceof ResolveEnd) {
-        this.shouldShowHeaderAndFooter = !e.urlAfterRedirects.includes('/not-found');
-      }
-    });
+  protected isMovieListPage!: boolean;
+
+  constructor() {
+    this.setShowHeaderFooterAndisMovieListPage();
   }
 
   onScrollToTop(): void {
     this.pageTop.nativeElement.scrollIntoView({ behavior: 'smooth' });
+  }
+
+  private setShowHeaderFooterAndisMovieListPage(): void {
+    this.router.events.pipe(filter(event => event instanceof ResolveEnd)).subscribe((e) => {
+      if (e instanceof ResolveEnd) {
+        this.shouldShowHeaderAndFooter = !e.urlAfterRedirects.includes('/not-found');
+        this.isMovieListPage = e.urlAfterRedirects.includes('/list');
+      }
+    });
   }
 }
