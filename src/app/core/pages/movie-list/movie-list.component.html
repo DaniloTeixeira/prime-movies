@@ -1,22 +1,57 @@
-<div class="wrapper">
-    <form>
-        <mat-form-field class="w-full p-10 pb-0">
+<div class="bg-black text-white">
+    <form class="pt-5">
+        <mat-form-field class="w-[380px]  px-10">
             <mat-label>Filter</mat-label>
             <input type="text" matInput placeholder="Sort by title or by release date">
         </mat-form-field>
     </form>
 
-    <section class=" flex gap-5 p-10" *ngFor="let movie of movies">
-        <div class="w-[400px] h-[550px]">
-            <img class="w-full h-full  border-2 border-gray-800 rounded-md" [src]="movie.thumbnail" [alt]="movie.alt">
-        </div>
-        <div class="flex flex-col">
-            <div>
-                info
+    <div>
+        <section class="flex flex-col xl:flex-row gap-10 mx-5 p-5 border-t-2 border-zinc-800"
+            *ngFor="let movie of movies">
+            <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
+            <div class="relative w-[300px]">
+                <img class="min-w-[300px] min-h-full rounded-lg" [src]="movie.thumbnail" [alt]="movie.alt">
+
+                <div class="absolute bottom-1 left-1 flex items-center gap-2 bg-black p-2 rounded-full">
+                    <mat-icon class="text-green-500">bookmark_added</mat-icon>
+                    <span>On my watchlist</span>
+                </div>
             </div>
-            <div>
-                video
+
+
+            <div class="flex flex-col gap-10">
+                <p class="max-[1279px]:hidden text-5xl font-bold text-red-600">{{ movie.title }}</p>
+                <p class="max-w-lg">{{ movie.description }}</p>
+                <div class="flex items-center justify-start flex-wrap gap-5">
+                    <div class="flex items-center gap-1 text-zinc-400">
+                        <mat-icon class="text-green-500">event_available</mat-icon>
+                        <p class="text-gray-400">{{ movie.releasedDate | date : 'MMMM yyyy' : 'mediumDate' }}</p>
+                    </div>
+
+                    <div class="flex items-center gap-1 text-zinc-400">
+                        <mat-icon class="text-green-500">schedule</mat-icon>
+                        <p>{{ movie.duration }}</p>
+                    </div>
+
+                    <p class="text-gray-400">{{ movie.rating }}/10</p>
+
+                </div>
+
+                <button (click)="addMovieToWatchList(movie)" type="button"
+                    class="flex items-center gap-2 cursor-pointer text-zinc-400 hover:text-whitew-fit rounded-full">
+                    <mat-icon class="text-green-500">bookmark_add</mat-icon>
+                    <span>Add to watchlist</span>
+                </button>
+
+                <button type="button"
+                    class="flex items-center gap-2 cursor-pointer text-zinc-400 bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800"
+                    (click)="onOpenTralerModal(movie.trailerLink)">
+                    <mat-icon class="text-red-600">play_circle</mat-icon>
+                    <span>Watch trailer</span>
+                </button>
+
             </div>
-        </div>
-    </section>
+        </section>
+    </div>
 </div>

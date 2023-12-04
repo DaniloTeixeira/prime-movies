@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
@@ -12,6 +13,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 import { FooterComponent } from './components/footer';
 import { HeaderComponent } from './components/header';
 import { InfinityStonesComponent } from './components/infinity-stones';
+import { TrailerDialogComponent } from './components/trailer-dialog/trailer-dialog.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { LandingPageComponent } from './pages/landing-page';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
@@ -23,6 +25,7 @@ const COMPONENTS = [
   NotFoundComponent,
   MovieListComponent,
   LandingPageComponent,
+  TrailerDialogComponent,
   InfinityStonesComponent,
 ];
 @NgModule({
@@ -37,6 +40,7 @@ const COMPONENTS = [
     MatIconModule,
     MatInputModule,
     MatButtonModule,
+    MatDialogModule,
     MatToolbarModule,
     MatTooltipModule,
     MatFormFieldModule,

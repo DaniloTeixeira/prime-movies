@@ -5,7 +5,7 @@ import { Movie } from '../../models/Movie';
   providedIn: 'root'
 })
 export class WatchlistService {
-  private primeMovieKey = 'prime-movie-key';
+  private primeMovies = 'prime-movies';
 
   addMovie(key: string, value: Movie): void {
     const data = this.getData();
@@ -37,7 +37,7 @@ export class WatchlistService {
   }
 
   clearWatchlist(): void {
-    localStorage.removeItem(this.primeMovieKey);
+    localStorage.removeItem(this.primeMovies);
   }
 
   getAllMovies(): Movie[] {
@@ -45,11 +45,11 @@ export class WatchlistService {
   }
 
   private getData() {
-    const dataString = localStorage.getItem(this.primeMovieKey);
+    const dataString = localStorage.getItem(this.primeMovies);
     return dataString ? JSON.parse(dataString) : {};
   }
 
   private setData(movie: Movie): void {
-    localStorage.setItem(this.primeMovieKey, JSON.stringify(movie));
+    localStorage.setItem(this.primeMovies, JSON.stringify(movie));
   }
 }
