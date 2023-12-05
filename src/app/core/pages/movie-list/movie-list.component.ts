@@ -2,7 +2,7 @@ import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { Observable, map, startWith } from 'rxjs';
+import { Observable, debounceTime, map, startWith, tap } from 'rxjs';
 import { MOVIES } from '../../data/movies';
 import { Movie } from '../../models/Movie';
 
@@ -16,6 +16,7 @@ export class MovieListComponent implements OnInit {
   private readonly destroy = inject(DestroyRef);
 
   protected readonly movies = MOVIES;
+  protected searchingMovies = false;
   protected filterField = new FormControl('');
   protected filteredMovies$!: Observable<Movie[]>;
 
@@ -39,9 +40,12 @@ export class MovieListComponent implements OnInit {
 
   private setFilteredMovies(): void {
     this.filteredMovies$ = this.filterField.valueChanges.pipe(
+      tap(() => (this.searchingMovies = true)),
       takeUntilDestroyed(this.destroy),
       startWith(''),
-      map((value) => this.filterMovies(value as string))
+      debounceTime(500),
+      map((value) => this.filterMovies(value as string)),
+      tap(() => (this.searchingMovies = false))
     );
   }
 }

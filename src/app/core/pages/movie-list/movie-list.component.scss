@@ -5,3 +5,14 @@
 .wrapper {
   min-height: calc(100vh - 116px);
 }
+
+mat-spinner {
+  position: absolute;
+  top: 13px;
+  right: -5px;
+  border-radius: 50%;
+}
+
+input {
+  padding-right: 35px;
+}

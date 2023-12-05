@@ -1,8 +1,10 @@
-<div class="wrapper bg-black min-h-screen-[] text-zinc-100 pb-5">
+<div class="wrapper bg-zinc-950 min-h-screen-[] text-zinc-100 pb-5 pl-5">
     <form class="p-5 flex justify-center md:justify-start">
-        <mat-form-field class="w-[300px]">
+        <mat-form-field class="w-[300px] relative">
             <mat-label>Filter</mat-label>
-            <input [formControl]="filterField" type="text" matInput placeholder="Sort by title or by release date">
+            <mat-spinner [diameter]="30" color="accent" *ngIf="searchingMovies"></mat-spinner>
+            <input [formControl]="filterField" class="pr-9" type="text" matInput
+                placeholder="Sort by title or by release date">
         </mat-form-field>
     </form>
 

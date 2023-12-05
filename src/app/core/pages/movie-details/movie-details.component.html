@@ -1,5 +1,5 @@
-<div class="wrapper bg-black">
-    <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 mx-5 p-5 border-t-2 border-zinc-800">
+<div class="wrapper bg-zinc-950">
+    <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 p-10">
         <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
         <div class="relative w-[300px]">
             <img class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800" [src]="movie.thumbnail"
@@ -17,7 +17,7 @@
             <p class="max-w-lg text-zinc-100">{{ movie.description }}</p>
 
             <div class="flex items-center">
-                <span class="text-zinc-300 bg-black" *ngFor="let genre of movie.genre; last as isLast">
+                <span class="text-zinc-300 bg-zinc-950" *ngFor="let genre of movie.genre; last as isLast">
                     {{ genre + ' ' }} {{ !isLast && '🔸' }}
                 </span>
             </div>

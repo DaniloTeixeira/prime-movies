@@ -7,6 +7,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
@@ -46,6 +47,7 @@ const COMPONENTS = [
     MatToolbarModule,
     MatTooltipModule,
     MatFormFieldModule,
+    MatProgressSpinnerModule,
   ],
   exports: [...COMPONENTS],
 })
