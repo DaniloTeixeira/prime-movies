@@ -11,21 +11,22 @@
             </div>
         </div>
 
-        <div class="flex flex-col gap-5 text-zinc-400">
+        <div class="flex flex-col gap-7 text-zinc-400">
             <h1 class="max-[1279px]:hidden text-5xl font-bold text-red-600">{{ movie.title }}</h1>
 
             <p class="max-w-lg text-zinc-100">{{ movie.description }}</p>
 
             <div class="flex items-center">
-                <span class="text-zinc-300 bg-zinc-950" *ngFor="let genre of movie.genre; last as isLast">
-                    {{ genre + ' ' }} {{ !isLast && '🔸' }}
+                <span [class.pl-1]="isLast" class="text-zinc-300 bg-zinc-950"
+                    *ngFor="let genre of movie.genre; last as isLast">
+                    {{ genre + ' ' }} {{ !isLast ? '🔸' : null }}
                 </span>
             </div>
 
             <div class="flex items-center justify-start flex-wrap gap-5">
                 <div class="flex items-center gap-1 ">
                     <mat-icon>event_available</mat-icon>
-                    <p>{{ movie.releasedDate | date : 'MMMM yyyy' : 'mediumDate' }}</p>
+                    <p>{{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}</p>
                 </div>
 
                 <div class="flex items-center gap-1 ">
@@ -33,22 +34,29 @@
                     <p>{{ movie.duration }}</p>
                 </div>
 
-                <p class="text-zinc-400">{{ movie.rating }}<span class="text-xs italic">/10</span></p>
+                <div class="flex items-center gap-2">
+                    <p class="text-zinc-400">{{ movie.rating }}<span class="text-xs italic">/10</span></p>
+                    <app-rating-star [rating]="movie.rating" />
+                </div>
 
             </div>
 
-            <button (click)="addMovieToWatchList(movie)" type="button"
-                class="flex items-center w-fit py-2 gap-2 cursor-pointer  hover:text-white rounded-full">
-                <mat-icon [class.text-green-500]="movie.onWatchlist">{{ movie.onWatchlist ? 'done' : 'add' }}</mat-icon>
-                <span>{{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
-            </button>
+            <div class="flex gap-7 mt-5 flex-wrap ">
+                <button type="button"
+                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
+                    (click)="onOpenTralerModal(movie.trailerLink)">
+                    <mat-icon class="text-red-600">play_circle</mat-icon>
+                    <span>Watch trailer</span>
+                </button>
 
-            <button type="button"
-                class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800"
-                (click)="onOpenTralerModal(movie.trailerLink)">
-                <mat-icon class="text-red-600">play_circle</mat-icon>
-                <span>Watch trailer</span>
-            </button>
+                <button (click)="addMovieToWatchList(movie)" type="button"
+                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
+                    <mat-icon
+                        [ngClass]="movie.onWatchlist ? 'text-green-500' : 'text-red-600'">{{ movie.onWatchlist ? 'done' : 'add' }}</mat-icon>
+                    <span>{{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
+                </button>
+
+            </div>
 
         </div>
     </section>

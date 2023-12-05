@@ -8,6 +8,8 @@
         </mat-form-field>
     </form>
 
+    <h1 class="text-center text-lg" *ngIf="showNoMoviesFoundMessage">No movies found.</h1>
+
     <div class="flex justify-center md:justify-start flex-wrap items-end gap-10 mx-5">
         <div class="w-[300px]" *ngFor="let movie of (filteredMovies$ | async)">
             <h1 class="text-2xl pl-2 font-medium mb-2">{{ movie.title }}</h1>

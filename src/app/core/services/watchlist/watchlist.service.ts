@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Movie } from '../../models/Movie';
+import { IMovie } from '../../models/Movie.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -7,14 +7,14 @@ import { Movie } from '../../models/Movie';
 export class WatchlistService {
   private primeMovies = 'prime-movies';
 
-  addMovie(key: string, value: Movie): void {
+  addMovie(key: string, value: IMovie): void {
     const data = this.getData();
 
     data[key] = value;
     this.setData(data);
   }
 
-  getMovieByKey(key: string): Movie {
+  getMovieByKey(key: string): IMovie {
     const data = this.getData();
     console.log('AQUI', data[key]);
     return data[key];
@@ -36,7 +36,7 @@ export class WatchlistService {
     localStorage.removeItem(this.primeMovies);
   }
 
-  getAllMovies(): Movie[] {
+  getAllMovies(): IMovie[] {
     return this.getData();
   }
 
@@ -46,7 +46,7 @@ export class WatchlistService {
     return dataString ? JSON.parse(dataString) : [];
   }
 
-  private setData(movie: Movie): void {
+  private setData(movie: IMovie): void {
     localStorage.setItem(this.primeMovies, JSON.stringify(movie));
   }
 }

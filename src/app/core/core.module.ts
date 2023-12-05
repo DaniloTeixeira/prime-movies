@@ -22,6 +22,7 @@ import { LandingPageComponent } from './pages/landing-page';
 import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { NotFoundComponent } from './pages/not-found';
+import { RatingStarComponent } from './components/rating-star/rating-star.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -34,7 +35,7 @@ const COMPONENTS = [
   InfinityStonesComponent,
 ];
 @NgModule({
-  declarations: [...COMPONENTS, MovieDetailsComponent],
+  declarations: [...COMPONENTS, MovieDetailsComponent, RatingStarComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,

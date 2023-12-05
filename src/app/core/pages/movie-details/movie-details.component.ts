@@ -2,7 +2,7 @@ import { Location } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { TrailerDialogComponent } from '../../components/trailer-dialog';
-import { Movie } from '../../models/Movie';
+import { IMovie } from '../../models/Movie.interface';
 import { WatchlistService } from '../../services/watchlist';
 
 @Component({
@@ -16,7 +16,7 @@ export class MovieDetailsComponent {
   private readonly location = inject(Location);
 
   protected loading!: boolean;
-  protected movie = this.location.getState() as Movie;
+  protected movie = this.location.getState() as IMovie;
   private savedWatchlistMovies = this.watchlistService.getAllMovies();
 
   constructor() {
@@ -32,7 +32,7 @@ export class MovieDetailsComponent {
     });
   }
 
-  getMovieByKey(key: string): Movie {
+  getMovieByKey(key: string): IMovie {
     return this.watchlistService.getMovieByKey('prime-videos');
   }
 
@@ -40,7 +40,7 @@ export class MovieDetailsComponent {
     this.watchlistService.removeItem(key);
   }
 
-  addMovieToWatchList(movie: Movie): void {
+  addMovieToWatchList(movie: IMovie): void {
     const storedMovie = this.getMovieByKey(movie.key);
 
     if (storedMovie) {

@@ -4,7 +4,7 @@ import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable, debounceTime, map, startWith, tap } from 'rxjs';
 import { MOVIES } from '../../data/movies';
-import { Movie } from '../../models/Movie';
+import { IMovie } from '../../models/Movie.interface';
 
 @Component({
   selector: 'app-movie-list',
@@ -20,25 +20,32 @@ export class MovieListComponent {
 
   protected loading!: boolean;
   protected searchingMovies = false;
-  protected filteredMovies$!: Observable<Movie[]>;
+  protected showNoMoviesFoundMessage = false;
+  protected filteredMovies$!: Observable<IMovie[]>;
 
   constructor() {
     this.loading = true;
     this.setFilteredMovies();
   }
 
-  goToMovieDetails(movie: Movie): void {
+  goToMovieDetails(movie: IMovie): void {
     this.router.navigate(['/movies/details'], { state: movie });
   }
 
-  private filterMovies(value: string): Movie[] {
+  private filterMovies(value: string): IMovie[] {
     const filterValue = value.toLowerCase();
 
-    return this.movies.filter(
+    const filteredMovies = this.movies.filter(
       (movie) =>
         movie.title.toLowerCase().includes(filterValue) ||
         movie.releasedDate.toLowerCase().includes(filterValue)
     );
+
+    if (!filteredMovies.length) {
+      this.showNoMoviesFoundMessage = true;
+    }
+
+    return filteredMovies;
   }
 
   private setFilteredMovies(): void {
