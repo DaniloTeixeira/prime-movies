@@ -73,12 +73,12 @@
                     Spoiler Alert!
                 </h1>
                 <h2 class="text-white py-5">
-                    Click in the box below, to {{ showSpoiler ? 'hide' : 'reveal' }} the plot twist
+                    Click on the box below, to {{ showSpoiler ? 'hide' : 'reveal' }} the plot twist
                 </h2>
             </div>
-            <div
-                class="flex items-center justify-center text-white max-w-[1250px] border-2 border-white rounded-lg cursor-pointer">
-                <p class="p-3" [ngClass]="showSpoiler ? 'bg-transparent' : 'bg-white'" (click)="toggleShowSpoiler()">
+            <div class="flex items-center justify-center text-white max-w-[1250px] cursor-pointer"
+                [matTooltip]="showSpoiler ? 'Hide plot twist' : 'Reveal plot twist'">
+                <p class="p-3" [class.blur-sm]="!showSpoiler" (click)="toggleShowSpoiler()">
                     In "Knives Out," the plot twist reveals that Harlan Thrombey faked his own death to expose his
                     family's deception. Detective Benoit Blanc uncovers the intricate scheme, turning the conventional
                     murder mystery narrative on its head. The twist not only showcases Rian Johnson's storytelling

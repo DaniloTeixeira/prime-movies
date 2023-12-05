@@ -10,12 +10,14 @@ import { MatInputModule } from '@angular/material/input';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatTooltipModule } from '@angular/material/tooltip';
 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer';
 import { HeaderComponent } from './components/header';
 import { InfinityStonesComponent } from './components/infinity-stones';
 import { TrailerDialogComponent } from './components/trailer-dialog/trailer-dialog.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { LandingPageComponent } from './pages/landing-page';
+import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { NotFoundComponent } from './pages/not-found';
 
@@ -29,12 +31,12 @@ const COMPONENTS = [
   InfinityStonesComponent,
 ];
 @NgModule({
-  declarations: [
-    ...COMPONENTS,
-  ],
+  declarations: [...COMPONENTS, MovieDetailsComponent],
   imports: [
     CommonModule,
     CoreRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
 
     MatCardModule,
     MatIconModule,
@@ -45,6 +47,6 @@ const COMPONENTS = [
     MatTooltipModule,
     MatFormFieldModule,
   ],
-  exports: [...COMPONENTS]
+  exports: [...COMPONENTS],
 })
 export class CoreModule {}

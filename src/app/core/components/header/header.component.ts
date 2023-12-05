@@ -3,13 +3,13 @@ import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss']
+  styleUrls: ['./header.component.scss'],
 })
 export class HeaderComponent {
   @Input({ required: true }) isMovieListPage!: boolean;
 
   get labelButton(): string {
-    return this.isMovieListPage ? 'Go to Landing Page' : 'Go to Movie List';
+    return this.isMovieListPage ? 'Go to Home' : 'Go to Movie List';
   }
 
   get path(): string {

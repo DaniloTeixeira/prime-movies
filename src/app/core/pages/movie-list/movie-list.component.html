@@ -1,57 +1,33 @@
-<div class="bg-black text-white">
-    <form class="pt-5">
-        <mat-form-field class="w-[380px]  px-10">
+<div class="wrapper bg-black min-h-screen-[] text-zinc-100 pb-5">
+    <form class="p-5 flex justify-center md:justify-start">
+        <mat-form-field class="w-[300px]">
             <mat-label>Filter</mat-label>
-            <input type="text" matInput placeholder="Sort by title or by release date">
+            <input [formControl]="filterField" type="text" matInput placeholder="Sort by title or by release date">
         </mat-form-field>
     </form>
 
-    <div>
-        <section class="flex flex-col xl:flex-row gap-10 mx-5 p-5 border-t-2 border-zinc-800"
-            *ngFor="let movie of movies">
-            <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
-            <div class="relative w-[300px]">
-                <img class="min-w-[300px] min-h-full rounded-lg" [src]="movie.thumbnail" [alt]="movie.alt">
-
-                <div class="absolute bottom-1 left-1 flex items-center gap-2 bg-black p-2 rounded-full">
-                    <mat-icon class="text-green-500">bookmark_added</mat-icon>
-                    <span>On my watchlist</span>
-                </div>
-            </div>
-
-
-            <div class="flex flex-col gap-10">
-                <p class="max-[1279px]:hidden text-5xl font-bold text-red-600">{{ movie.title }}</p>
-                <p class="max-w-lg">{{ movie.description }}</p>
-                <div class="flex items-center justify-start flex-wrap gap-5">
-                    <div class="flex items-center gap-1 text-zinc-400">
-                        <mat-icon class="text-green-500">event_available</mat-icon>
-                        <p class="text-gray-400">{{ movie.releasedDate | date : 'MMMM yyyy' : 'mediumDate' }}</p>
+    <div class="flex justify-center md:justify-start flex-wrap items-end gap-10 mx-5">
+        <div class="w-[300px]" *ngFor="let movie of (filteredMovies$ | async)">
+            <h1 class="text-2xl pl-2 font-medium mb-2">{{ movie.title }}</h1>
+            <a (click)="goToMovieDetails(movie)">
+                <div class="relative">
+                    <div
+                        class="absolute top-[2px] right-[2px] rounded-bl-lg rounded-tr-md flex items-center gap-1 text-white bg-red-600 py-1 px-2 z-10">
+                        <!-- <mat-icon>event_available</mat-icon> -->
+                        <p class=""> Release date:
+                            {{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}
+                        </p>
                     </div>
+                    <img class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
+                        matTooltip="Show details" [src]="movie.thumbnail" [alt]="movie.alt">
 
-                    <div class="flex items-center gap-1 text-zinc-400">
-                        <mat-icon class="text-green-500">schedule</mat-icon>
-                        <p>{{ movie.duration }}</p>
+                    <div
+                        class="absolute bottom-[2px] left-[2px] rounded-bl-md rounded-tr-lg flex items-center gap-1 py-1 px-2 backdrop-blur-3xl font-medium">
+                        <mat-icon class="text-green-500">done</mat-icon>
+                        <span class="text-sm text-white">On my watchlist</span>
                     </div>
-
-                    <p class="text-gray-400">{{ movie.rating }}/10</p>
-
                 </div>
-
-                <button (click)="addMovieToWatchList(movie)" type="button"
-                    class="flex items-center gap-2 cursor-pointer text-zinc-400 hover:text-whitew-fit rounded-full">
-                    <mat-icon class="text-green-500">bookmark_add</mat-icon>
-                    <span>Add to watchlist</span>
-                </button>
-
-                <button type="button"
-                    class="flex items-center gap-2 cursor-pointer text-zinc-400 bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800"
-                    (click)="onOpenTralerModal(movie.trailerLink)">
-                    <mat-icon class="text-red-600">play_circle</mat-icon>
-                    <span>Watch trailer</span>
-                </button>
-
-            </div>
-        </section>
+            </a>
+        </div>
     </div>
 </div>

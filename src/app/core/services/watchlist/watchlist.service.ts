@@ -2,38 +2,34 @@ import { Injectable } from '@angular/core';
 import { Movie } from '../../models/Movie';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class WatchlistService {
   private primeMovies = 'prime-movies';
 
   addMovie(key: string, value: Movie): void {
     const data = this.getData();
+
     data[key] = value;
     this.setData(data);
   }
 
   getMovieByKey(key: string): Movie {
     const data = this.getData();
-
+    console.log('AQUI', data[key]);
     return data[key];
   }
-  updateMovie(key: string, value: any): void {
-    const data = this.getData();
+  // updateMovie(key: string, value: any): void {
+  //   const data = this.getData();
 
-    if (data.hasOwnProperty(key)) {
-      data[key] = value;
-      this.setData(data);
-    }
-  }
+  //   if (data.hasOwnProperty(key)) {
+  //     data[key] = value;
+  //     this.setData(data);
+  //   }
+  // }
 
-  deleteMovie(key: string): void {
-    const data = this.getData();
-
-    if (data.hasOwnProperty(key)) {
-      delete data[key];
-      this.setData(data);
-    }
+  removeItem(key: string): void {
+    localStorage.removeItem(key);
   }
 
   clearWatchlist(): void {
@@ -46,7 +42,8 @@ export class WatchlistService {
 
   private getData() {
     const dataString = localStorage.getItem(this.primeMovies);
-    return dataString ? JSON.parse(dataString) : {};
+
+    return dataString ? JSON.parse(dataString) : [];
   }
 
   private setData(movie: Movie): void {

@@ -1,0 +1,55 @@
+<div class="wrapper bg-black">
+    <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 mx-5 p-5 border-t-2 border-zinc-800">
+        <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
+        <div class="relative w-[300px]">
+            <img class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800" [src]="movie.thumbnail"
+                [alt]="movie.alt">
+            <div
+                class="absolute bottom-[2px] left-[2px] rounded-bl-md rounded-tr-lg flex items-center gap-1 py-1 px-2 backdrop-blur-3xl font-medium">
+                <mat-icon class="text-green-500">done</mat-icon>
+                <span class="text-sm text-white">On my watchlist</span>
+            </div>
+        </div>
+
+        <div class="flex flex-col gap-5 text-zinc-400">
+            <h1 class="max-[1279px]:hidden text-5xl font-bold text-red-600">{{ movie.title }}</h1>
+
+            <p class="max-w-lg text-zinc-100">{{ movie.description }}</p>
+
+            <div class="flex items-center">
+                <span class="text-zinc-300 bg-black" *ngFor="let genre of movie.genre; last as isLast">
+                    {{ genre + ' ' }} {{ !isLast && '🔸' }}
+                </span>
+            </div>
+
+            <div class="flex items-center justify-start flex-wrap gap-5">
+                <div class="flex items-center gap-1 ">
+                    <mat-icon>event_available</mat-icon>
+                    <p>{{ movie.releasedDate | date : 'MMMM yyyy' : 'mediumDate' }}</p>
+                </div>
+
+                <div class="flex items-center gap-1 ">
+                    <mat-icon>schedule</mat-icon>
+                    <p>{{ movie.duration }}</p>
+                </div>
+
+                <p class="text-zinc-400">{{ movie.rating }}<span class="text-xs italic">/10</span></p>
+
+            </div>
+
+            <button (click)="addMovieToWatchList(movie)" type="button"
+                class="flex items-center w-fit py-2 gap-2 cursor-pointer  hover:text-white rounded-full">
+                <mat-icon [class.text-green-500]="movie.onWatchlist">{{ movie.onWatchlist ? 'done' : 'add' }}</mat-icon>
+                <span>{{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
+            </button>
+
+            <button type="button"
+                class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800"
+                (click)="onOpenTralerModal(movie.trailerLink)">
+                <mat-icon class="text-red-600">play_circle</mat-icon>
+                <span>Watch trailer</span>
+            </button>
+
+        </div>
+    </section>
+</div>

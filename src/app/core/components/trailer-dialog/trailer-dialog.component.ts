@@ -22,4 +22,8 @@ export class TrailerDialogComponent {
   private sanitizeUrl(url: string): void {
     this.safeTrailerLink = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+
+  onCloseDialog(): void {
+    this.matDialogRef.close();
+  }
 }
