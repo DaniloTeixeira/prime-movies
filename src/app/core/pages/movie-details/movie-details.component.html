@@ -2,8 +2,8 @@
     <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 p-10">
         <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
         <div class="relative w-[300px]">
-            <img class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800" [src]="movie.thumbnail"
-                [alt]="movie.alt">
+            <img (load)="loading = false" class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800"
+                [src]="movie.thumbnail" [alt]="movie.alt">
             <div
                 class="absolute bottom-[2px] left-[2px] rounded-bl-md rounded-tr-lg flex items-center gap-1 py-1 px-2 backdrop-blur-3xl font-medium">
                 <mat-icon class="text-green-500">done</mat-icon>
@@ -53,3 +53,5 @@
         </div>
     </section>
 </div>
+
+<app-loader *ngIf="loading" />

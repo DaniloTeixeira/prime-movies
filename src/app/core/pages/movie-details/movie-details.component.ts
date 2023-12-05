@@ -15,12 +15,14 @@ export class MovieDetailsComponent {
   private readonly watchlistService = inject(WatchlistService);
   private readonly location = inject(Location);
 
+  protected loading!: boolean;
   protected movie = this.location.getState() as Movie;
   private savedWatchlistMovies = this.watchlistService.getAllMovies();
 
   constructor() {
     // console.log('Storage List', this.savedWatchlistMovies);
     console.log(this.movie);
+    this.loading = true;
   }
 
   onOpenTralerModal(trailerLink: string): void {

@@ -15,6 +15,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer';
 import { HeaderComponent } from './components/header';
 import { InfinityStonesComponent } from './components/infinity-stones';
+import { LoaderComponent } from './components/loader';
 import { TrailerDialogComponent } from './components/trailer-dialog/trailer-dialog.component';
 import { CoreRoutingModule } from './core-routing.module';
 import { LandingPageComponent } from './pages/landing-page';
@@ -25,6 +26,7 @@ import { NotFoundComponent } from './pages/not-found';
 const COMPONENTS = [
   HeaderComponent,
   FooterComponent,
+  LoaderComponent,
   NotFoundComponent,
   MovieListComponent,
   LandingPageComponent,

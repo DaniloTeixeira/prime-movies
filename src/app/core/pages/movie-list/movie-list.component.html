@@ -20,7 +20,8 @@
                             {{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}
                         </p>
                     </div>
-                    <img class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
+                    <img (load)="loading = false"
+                        class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
                         matTooltip="Show details" [src]="movie.thumbnail" [alt]="movie.alt">
 
                     <div
@@ -33,3 +34,5 @@
         </div>
     </div>
 </div>
+
+<app-loader *ngIf="loading" />

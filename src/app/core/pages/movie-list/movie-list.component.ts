@@ -1,4 +1,4 @@
-import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -11,16 +11,19 @@ import { Movie } from '../../models/Movie';
   templateUrl: './movie-list.component.html',
   styleUrls: ['./movie-list.component.scss'],
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent {
   private readonly router = inject(Router);
   private readonly destroy = inject(DestroyRef);
 
   protected readonly movies = MOVIES;
+  protected readonly filterField = new FormControl('');
+
+  protected loading!: boolean;
   protected searchingMovies = false;
-  protected filterField = new FormControl('');
   protected filteredMovies$!: Observable<Movie[]>;
 
-  ngOnInit(): void {
+  constructor() {
+    this.loading = true;
     this.setFilteredMovies();
   }
 
