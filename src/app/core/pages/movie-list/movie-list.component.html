@@ -1,4 +1,4 @@
-<div class="movies-container min-h-screen-[] text-zinc-100 pb-5 pl-5">
+<div class="movies-container min-h-screen-[] text-zinc-100 pb-5 lg:pl-5">
     <form class="p-5 flex justify-center md:justify-start">
         <mat-form-field class="w-[300px] relative">
             <mat-label>Filter</mat-label>
@@ -20,9 +20,11 @@
                         <h1 class="bottom-0 text-md pl-2 font-medium mb-2">{{ movie.title }}</h1>
                     </div>
 
-                    <img (load)="loading = false"
-                        class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
-                        matTooltip="Show details" [src]="movie.thumbnail" [alt]="movie.alt">
+                    <div class="overflow-auto">
+                        <img (load)="loading = false"
+                            class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
+                            matTooltip="Show details" [src]="movie.thumbnail" [alt]="movie.alt">
+                    </div>
 
                     <div class="absolute bottom-0.5 left-0.5 right-0.5 rounded-bl-md rounded-br-md py-1 bg-red-600 ">
                         <p class="w-full text-center text-white"> Release date:
