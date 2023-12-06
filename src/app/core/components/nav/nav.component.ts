@@ -9,7 +9,7 @@ export class NavComponent {
   @Input({ required: true }) isMovieListPage!: boolean;
 
   get labelButton(): string {
-    return this.isMovieListPage ? 'Go to Home' : 'Go to Movie List';
+    return this.isMovieListPage ? 'Home' : 'Movie List';
   }
 
   get path(): string {
