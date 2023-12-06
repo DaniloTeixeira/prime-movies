@@ -13,9 +13,9 @@
     </div>
     <div class="flex gap-10 mx-5 flex-wrap justify-center md:justify-start">
         <div class="relative w-[300px]" *ngFor="let movie of (storedMovies$ | async)">
-            <img class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800" [src]="movie.thumbnail"
+            <img class="min-w-[300px] min-h-full rounded-lg border-2 border-zinc-800" [src]="movie.thumbnail"
                 [alt]="movie.alt">
-            <div class="absolute top-[-24px] right-[-20px]
+            <div class="absolute top-[-23px] right-[-21px]
                 ">
                 <button mat-icon-button type="button" matTooltip="Remove from watchlist"
                     (click)="removeFromWatchlist(movie)">
