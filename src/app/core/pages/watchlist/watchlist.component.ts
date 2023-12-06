@@ -5,7 +5,7 @@ import { WatchlistService } from '../../services/watchlist';
 @Component({
   selector: 'app-watchlist',
   templateUrl: './watchlist.component.html',
-  styleUrl: './watchlist.component.scss',
+  styleUrls: ['./watchlist.component.scss'],
 })
 export class WatchlistComponent {
   private readonly watchlistService = inject(WatchlistService);

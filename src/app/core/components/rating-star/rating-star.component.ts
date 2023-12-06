@@ -4,7 +4,7 @@ import { RATING_STARS } from '../../data/rating-stars';
 @Component({
   selector: 'app-rating-star',
   templateUrl: './rating-star.component.html',
-  styleUrl: './rating-star.component.scss',
+  styleUrls: ['./rating-star.component.scss'],
 })
 export class RatingStarComponent implements OnInit {
   @Input({ required: true }) rating!: number;

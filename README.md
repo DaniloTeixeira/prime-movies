@@ -1,10 +1,6 @@
-# PrimeVideosV17
+# PrimeMovies
 
-# Poject Link in Vercel
-
-https://prime-movies-delta.vercel.app/
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.0.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.10.
 
 ## Development server
 

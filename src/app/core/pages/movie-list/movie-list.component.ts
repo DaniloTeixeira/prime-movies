@@ -35,8 +35,6 @@ export class MovieListComponent {
   }
 
   private filterMovies(value: string): IMovie[] {
-    this.showNoMoviesFoundMessage = false;
-
     const filterValue = value.toLowerCase();
 
     const filteredMovies = this.movies.filter(

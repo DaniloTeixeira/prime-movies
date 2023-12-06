@@ -1,9 +1,9 @@
 <nav class="z-10 w-full bg-black cursor-pointer animate__animated animate__fadeInDown">
     <div class="flex items-center justify-between mx-5 p-5">
-        <a class="text-stone-200  font-medium" [routerLink]="path">{{ labelButton }}</a>
+        <a class="text-zinc-100 hover:text-zinc-300  font-medium" [routerLink]="path">{{ labelButton }}</a>
 
-        <a class="watchlist-link mt-1 mr-1" mat-mini-fab matTooltip="My watchlist" routerLink="/movies/watchlist">
+        <button class="watchlist-link mt-1 mr-1" mat-mini-fab matTooltip="My watchlist" routerLink="/movies/watchlist">
             <mat-icon>subscriptions</mat-icon>
-        </a>
+        </button>
     </div>
 </nav>

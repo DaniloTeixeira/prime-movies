@@ -1,8 +1,3 @@
-a {
-  filter: opacity(0.7) drop-shadow(0 0 0 #000);
-  transition: ease-in-out 0.2s;
-
-  &:hover {
-    filter: opacity(0.9) drop-shadow(0 0 0 #fff);
-  }
+button {
+  background-color: #eeeeef;
 }

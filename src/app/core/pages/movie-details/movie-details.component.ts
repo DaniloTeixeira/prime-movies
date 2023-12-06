@@ -9,7 +9,7 @@ import { WatchlistService } from '../../services/watchlist';
 @Component({
   selector: 'app-movie-details',
   templateUrl: './movie-details.component.html',
-  styleUrl: './movie-details.component.scss',
+  styleUrls: ['./movie-details.component.scss'],
 })
 export class MovieDetailsComponent {
   private readonly location = inject(Location);
