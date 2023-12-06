@@ -26,7 +26,6 @@ export class MovieDetailsComponent {
   constructor() {
     this.loading = true;
     this.setIsOnWatchlist();
-    this.loadPageContentOnTop();
   }
 
   onOpenTralerModal(trailerLink: string): void {
@@ -61,9 +60,5 @@ export class MovieDetailsComponent {
           (movie) => movie.key === this.movie.key
         );
       });
-  }
-  
-  private loadPageContentOnTop(): void {
-    window.scrollTo(0,0)
   }
 }

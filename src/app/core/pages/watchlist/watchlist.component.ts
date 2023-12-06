@@ -20,4 +20,8 @@ export class WatchlistComponent {
   clearWatchlist(): void {
     this.watchlistService.clearWatchlist();
   }
+
+  onGoBack(): void {
+    history.back()
+  }
 }

@@ -1,7 +1,7 @@
 import { ViewportScroller } from '@angular/common';
 import { Component, DestroyRef, ElementRef, HostListener, ViewChild, inject } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { ResolveEnd, Router } from '@angular/router';
+import { NavigationEnd, ResolveEnd, Router } from '@angular/router';
 import { filter } from 'rxjs';
 @Component({
   selector: 'app-root',
@@ -26,9 +26,18 @@ export class AppComponent {
   protected isMovieListPage!: boolean;
 
   constructor() {
+    this.scrollToTopAfterNavigation();
     this.setShowHeaderFooterAndisMovieListPage();
 
   }
+
+  scrollToTopAfterNavigation(): void {
+    this.router.events.pipe(takeUntilDestroyed(this.destroyRef),
+      filter(event => event instanceof NavigationEnd))
+      .subscribe(() => this.viewPortScroller.scrollToPosition([0, 0]));
+  }
+
+
 
   onScrollToTop(): void {
     this.pageTop.nativeElement.scrollIntoView({ behavior: 'smooth' });

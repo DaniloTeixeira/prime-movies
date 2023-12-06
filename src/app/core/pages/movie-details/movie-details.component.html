@@ -50,14 +50,14 @@
 
             <div class="flex gap-7 mt-5 flex-wrap text-zinc-200 ">
                 <button type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
+                    class="flex items-center gap-2 bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
                     (click)="onOpenTralerModal(movie.trailerLink)">
                     <mat-icon class="text-red-600">play_arrow</mat-icon>
                     <span>Watch trailer</span>
                 </button>
 
                 <button (click)="onHandleWatchlist(movie)" type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
+                    class="flex items-center gap-2 bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
                     <mat-icon
                         [ngClass]="isOnWatchlist ? 'text-green-500' : 'text-red-600'">{{ isOnWatchlist ? 'done' : 'add' }}</mat-icon>
                     <span>{{ isOnWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
@@ -67,6 +67,12 @@
 
         </div>
     </section>
+
+    <button type="button" class="flex ml-10 bg-zinc-900 w-fit p-3 rounded-full hover:bg-zinc-800 transition ease-linear"
+        routerLink="/movies/list">
+        <mat-icon class="text-zinc-100">arrow_back</mat-icon>
+    </button>
 </div>
+
 
 <app-loader *ngIf="loading || (savingOrDeletingInProgress$ | async)" />

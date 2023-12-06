@@ -42,7 +42,14 @@
                 </a>
             </div>
         </div>
+
+        <button *ngIf="!loading" type="button"
+            class="flex mt-10 ml-5 bg-zinc-800 w-fit p-3 rounded-full hover:bg-zinc-800 transition ease-linear"
+            routerLink="/">
+            <mat-icon class="text-zinc-100">arrow_back</mat-icon>
+        </button>
     </div>
+
 </div>
 
 <app-loader *ngIf="loading" />

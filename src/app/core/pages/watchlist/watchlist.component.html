@@ -24,8 +24,12 @@
             </div>
         </div>
     </div>
-
 </div>
+
+<button (click)="onGoBack()" type="button"
+    class="flex z-10 ml-5 bg-zinc-800 w-fit p-3 rounded-full hover:bg-zinc-800 transition ease-linear" routerLink="..">
+    <mat-icon class="text-zinc-100">arrow_back</mat-icon>
+</button>
 
 <ng-template #noContent>
     <h1 class="movies-container text-center text-2xl text-zinc-300 pt-20">Your list is empty.</h1>
