@@ -1,4 +1,4 @@
-<div class="wrapper bg-zinc-950 min-h-screen-[] text-zinc-100 pb-5 pl-5">
+<div class="movies-container min-h-screen-[] text-zinc-100 pb-5 pl-5">
     <form class="p-5 flex justify-center md:justify-start">
         <mat-form-field class="w-[300px] relative">
             <mat-label>Filter</mat-label>
@@ -8,28 +8,27 @@
         </mat-form-field>
     </form>
 
-    <h1 class="text-center text-lg" *ngIf="showNoMoviesFoundMessage">No movies found.</h1>
+    <h1 class="text-center text-lg mt-10" *ngIf="showNoMoviesFoundMessage">No movies found.</h1>
 
     <div class="flex justify-center md:justify-start flex-wrap items-end gap-10 mx-5">
         <div class="w-[300px]" *ngFor="let movie of (filteredMovies$ | async)">
-            <h1 class="text-2xl pl-2 font-medium mb-2">{{ movie.title }}</h1>
             <a (click)="goToMovieDetails(movie)">
                 <div class="relative">
+
                     <div
-                        class="absolute top-[2px] right-[2px] rounded-bl-lg rounded-tr-md flex items-center gap-1 text-white bg-red-600 py-1 px-2 z-10">
-                        <!-- <mat-icon>event_available</mat-icon> -->
-                        <p class=""> Release date:
-                            {{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}
-                        </p>
+                        class="absolute pt-1 top-0.5 left-0.5 right-0.5 z-10 text-center text-white rounded-tl-md rounded-tr-md backdrop-blur-lg ">
+                        <h1 class="bottom-0 text-md pl-2 font-medium mb-2">{{ movie.title }}</h1>
                     </div>
+
                     <img (load)="loading = false"
                         class="w-full h-[440px] cursor-pointer rounded-lg border-zinc-800 border-2 filter brightness-90 hover:filter-none transition ease-linear"
                         matTooltip="Show details" [src]="movie.thumbnail" [alt]="movie.alt">
 
                     <div
-                        class="absolute bottom-[2px] left-[2px] rounded-bl-md rounded-tr-lg flex items-center gap-1 py-1 px-2 backdrop-blur-3xl font-medium">
-                        <mat-icon class="text-green-500">done</mat-icon>
-                        <span class="text-sm text-white">On my watchlist</span>
+                        class="absolute bottom-0.5 left-0.5 right-0.5 rounded-bl-md rounded-br-md py-1 backdrop-blur-xl ">
+                        <p class="w-full text-center text-white"> Release date:
+                            {{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}
+                        </p>
                     </div>
                 </div>
             </a>

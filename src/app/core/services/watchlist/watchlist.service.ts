@@ -36,7 +36,7 @@ export class WatchlistService {
     localStorage.removeItem(this.primeMovies);
   }
 
-  getAllMovies(): IMovie[] {
+  getAllMovies(): IMovie {
     return this.getData();
   }
 

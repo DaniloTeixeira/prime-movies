@@ -13,29 +13,33 @@ import { MatTooltipModule } from '@angular/material/tooltip';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer';
-import { HeaderComponent } from './components/header';
 import { InfinityStonesComponent } from './components/infinity-stones';
 import { LoaderComponent } from './components/loader';
-import { TrailerDialogComponent } from './components/trailer-dialog/trailer-dialog.component';
+import { NavComponent } from './components/nav/nav.component';
+import { RatingStarComponent } from './components/rating-star';
+import { TrailerDialogComponent } from './components/trailer-dialog';
 import { CoreRoutingModule } from './core-routing.module';
 import { LandingPageComponent } from './pages/landing-page';
-import { MovieDetailsComponent } from './pages/movie-details/movie-details.component';
-import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { MovieDetailsComponent } from './pages/movie-details';
+import { MovieListComponent } from './pages/movie-list';
 import { NotFoundComponent } from './pages/not-found';
-import { RatingStarComponent } from './components/rating-star/rating-star.component';
+import { WatchlistComponent } from './pages/watchlist';
 
 const COMPONENTS = [
-  HeaderComponent,
-  FooterComponent,
+  NavComponent,
   LoaderComponent,
+  FooterComponent,
   NotFoundComponent,
   MovieListComponent,
+  WatchlistComponent,
+  RatingStarComponent,
   LandingPageComponent,
+  MovieDetailsComponent,
   TrailerDialogComponent,
   InfinityStonesComponent,
 ];
 @NgModule({
-  declarations: [...COMPONENTS, MovieDetailsComponent, RatingStarComponent],
+  declarations: [...COMPONENTS],
   imports: [
     CommonModule,
     CoreRoutingModule,

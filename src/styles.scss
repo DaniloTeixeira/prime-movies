@@ -42,3 +42,7 @@ body {
 .mdc-text-field--filled {
   background-color: #000 !important;
 }
+
+.movies-container {
+  min-height: calc(100vh - 160px);
+}

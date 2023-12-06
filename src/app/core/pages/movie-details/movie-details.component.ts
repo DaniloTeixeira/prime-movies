@@ -17,11 +17,8 @@ export class MovieDetailsComponent {
 
   protected loading!: boolean;
   protected movie = this.location.getState() as IMovie;
-  private savedWatchlistMovies = this.watchlistService.getAllMovies();
 
   constructor() {
-    // console.log('Storage List', this.savedWatchlistMovies);
-    console.log(this.movie);
     this.loading = true;
   }
 

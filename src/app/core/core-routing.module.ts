@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LandingPageComponent } from './pages/landing-page';
 import { MovieDetailsComponent } from './pages/movie-details';
 import { MovieListComponent } from './pages/movie-list';
+import { WatchlistComponent } from './pages/watchlist';
 
 const routes: Routes = [
   {
@@ -16,6 +17,10 @@ const routes: Routes = [
   {
     path: 'details',
     component: MovieDetailsComponent,
+  },
+  {
+    path: 'watchlist',
+    component: WatchlistComponent,
   },
 ];
 

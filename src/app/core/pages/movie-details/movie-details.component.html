@@ -1,6 +1,6 @@
-<div class="wrapper bg-zinc-950">
+<div class="movies-container">
     <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 p-10">
-        <p class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</p>
+        <h1 class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-6">{{ movie.title }}</h1>
         <div class="relative w-[300px]">
             <img (load)="loading = false" class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800"
                 [src]="movie.thumbnail" [alt]="movie.alt">
@@ -17,7 +17,7 @@
             <p class="max-w-lg text-zinc-100">{{ movie.description }}</p>
 
             <div class="flex items-center">
-                <span [class.pl-1]="isLast" class="text-zinc-300 bg-zinc-950"
+                <span [class.pl-1]="isLast" class="text-zinc-300 bg-black"
                     *ngFor="let genre of movie.genre; last as isLast">
                     {{ genre + ' ' }} {{ !isLast ? '🔸' : null }}
                 </span>
@@ -43,14 +43,14 @@
 
             <div class="flex gap-7 mt-5 flex-wrap ">
                 <button type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
+                    class="flex items-center gap-2 cursor-pointer  bg-black w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
                     (click)="onOpenTralerModal(movie.trailerLink)">
-                    <mat-icon class="text-red-600">play_circle</mat-icon>
+                    <mat-icon class="text-red-600">play_arrow</mat-icon>
                     <span>Watch trailer</span>
                 </button>
 
                 <button (click)="addMovieToWatchList(movie)" type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
+                    class="flex items-center gap-2 cursor-pointer  bg-black w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
                     <mat-icon
                         [ngClass]="movie.onWatchlist ? 'text-green-500' : 'text-red-600'">{{ movie.onWatchlist ? 'done' : 'add' }}</mat-icon>
                     <span>{{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>

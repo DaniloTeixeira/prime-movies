@@ -1,11 +1,11 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.scss'],
+  selector: 'app-nav',
+  templateUrl: './nav.component.html',
+  styleUrl: './nav.component.scss',
 })
-export class HeaderComponent {
+export class NavComponent {
   @Input({ required: true }) isMovieListPage!: boolean;
 
   get labelButton(): string {
