@@ -1,52 +1,70 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 import { IMovie } from '../../models/Movie.interface';
+import { NotificationService } from '../notification';
 
 @Injectable({
   providedIn: 'root',
 })
 export class WatchlistService {
-  private primeMovies = 'prime-movies';
+  private readonly notification = inject(NotificationService);
 
-  addMovie(key: string, value: IMovie): void {
-    const data = this.getData();
+  private readonly moviesSubject$ = new BehaviorSubject<IMovie[]>([]);
+  public readonly movies$ = this.moviesSubject$.asObservable();
 
-    data[key] = value;
-    this.setData(data);
+  private readonly isLoading$ = new BehaviorSubject<boolean>(false);
+  public readonly loading$ = this.isLoading$.asObservable();
+
+  constructor() {
+    this.loadMoviesFromStorage();
   }
 
-  getMovieByKey(key: string): IMovie {
-    const data = this.getData();
-    console.log('AQUI', data[key]);
-    return data[key];
+  addMovie(movie: IMovie): void {
+    movie.onWatchlist = true;
+    const info = 'Movie added to your watchlist';
+    const currentMovies = this.moviesSubject$.value;
+    const updatedMovies = [...currentMovies, movie];
+    this.saveMoviesToStorage(updatedMovies, info);
   }
-  // updateMovie(key: string, value: any): void {
-  //   const data = this.getData();
 
-  //   if (data.hasOwnProperty(key)) {
-  //     data[key] = value;
-  //     this.setData(data);
-  //   }
-  // }
+  deleteMovie(movieKey: string): void {
+    const info = 'Movie deleted from you watchlist';
+    const currentMovies = this.moviesSubject$.value;
+    const updatedMovies = currentMovies.filter((movie) => {
+      if (movie.key !== movieKey) {
+        movie.onWatchlist = false;
+      }
 
-  removeItem(key: string): void {
-    localStorage.removeItem(key);
+      movie.key !== movieKey;
+    });
+
+    this.saveMoviesToStorage(updatedMovies, info);
   }
 
   clearWatchlist(): void {
-    localStorage.removeItem(this.primeMovies);
+    this.isLoading$.next(true);
+
+    setTimeout(() => {
+      localStorage.removeItem('movies');
+      this.loadMoviesFromStorage();
+      this.isLoading$.next(false);
+    }, 1500);
   }
 
-  getAllMovies(): IMovie {
-    return this.getData();
+  private loadMoviesFromStorage(): void {
+    const storedMovies = localStorage.getItem('movies');
+    const parsedMovies = storedMovies ? JSON.parse(storedMovies) : [];
+    this.moviesSubject$.next(parsedMovies);
   }
 
-  private getData() {
-    const dataString = localStorage.getItem(this.primeMovies);
+  private saveMoviesToStorage(movies: IMovie[], notification: string): void {
+    this.isLoading$.next(true);
 
-    return dataString ? JSON.parse(dataString) : [];
-  }
-
-  private setData(movie: IMovie): void {
-    localStorage.setItem(this.primeMovies, JSON.stringify(movie));
+    setTimeout(() => {
+      localStorage.setItem('movies', JSON.stringify(movies));
+      this.moviesSubject$.next(movies);
+      this.isLoading$.next(false);
+      this.notification.info(notification);
+    }, 1500);
   }
 }

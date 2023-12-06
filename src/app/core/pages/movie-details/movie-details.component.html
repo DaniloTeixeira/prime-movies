@@ -4,9 +4,9 @@
         <div class="relative w-[300px]">
             <img (load)="loading = false" class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800"
                 [src]="movie.thumbnail" [alt]="movie.alt">
-            <div
-                class="absolute bottom-[2px] left-[2px] rounded-bl-md rounded-tr-lg flex items-center gap-1 py-1 px-2 backdrop-blur-3xl font-medium">
-                <mat-icon class="text-green-500">done</mat-icon>
+            <div *ngIf="isOnWatchlist"
+                class="absolute bottom-2 left-2 rounded-full flex items-center gap-1 py-2 px-3 bg-black text-white font-medium">
+                <mat-icon class="text-green-500">check_circle</mat-icon>
                 <span class="text-sm text-white">On my watchlist</span>
             </div>
         </div>
@@ -23,7 +23,7 @@
                 </span>
             </div>
 
-            <div class="flex items-center justify-start flex-wrap gap-5">
+            <div class="flex items-center justify-start flex-wrap gap-5 text-zinc-300">
                 <div class="flex items-center gap-1 ">
                     <mat-icon>event_available</mat-icon>
                     <p>{{ movie.releasedDate | date : 'MMMM dd, yyyy' : 'mediumDate' }}</p>
@@ -35,25 +35,25 @@
                 </div>
 
                 <div class="flex items-center gap-2">
-                    <p class="text-zinc-400">{{ movie.rating }}<span class="text-xs italic">/10</span></p>
+                    <p>{{ movie.rating }}<span class="text-xs italic">/10</span></p>
                     <app-rating-star [rating]="movie.rating" />
                 </div>
 
             </div>
 
-            <div class="flex gap-7 mt-5 flex-wrap ">
+            <div class="flex gap-7 mt-5 flex-wrap text-zinc-200 ">
                 <button type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-black w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
+                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear"
                     (click)="onOpenTralerModal(movie.trailerLink)">
                     <mat-icon class="text-red-600">play_arrow</mat-icon>
                     <span>Watch trailer</span>
                 </button>
 
-                <button (click)="addMovieToWatchList(movie)" type="button"
-                    class="flex items-center gap-2 cursor-pointer  bg-black w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
+                <button (click)="onHandleWatchlist(movie)" type="button"
+                    class="flex items-center gap-2 cursor-pointer  bg-zinc-900 w-fit p-5 rounded-full hover:bg-zinc-800 transition ease-linear">
                     <mat-icon
-                        [ngClass]="movie.onWatchlist ? 'text-green-500' : 'text-red-600'">{{ movie.onWatchlist ? 'done' : 'add' }}</mat-icon>
-                    <span>{{ movie.onWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
+                        [ngClass]="isOnWatchlist ? 'text-green-500' : 'text-red-600'">{{ isOnWatchlist ? 'done' : 'add' }}</mat-icon>
+                    <span>{{ isOnWatchlist ? 'Remove from watchlist' : 'Add to watchlist' }}</span>
                 </button>
 
             </div>
@@ -62,4 +62,4 @@
     </section>
 </div>
 
-<app-loader *ngIf="loading" />
+<app-loader *ngIf="loading || (savingOrDeletingInProgress$ | async)" />

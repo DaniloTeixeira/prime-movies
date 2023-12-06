@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { Observable, debounceTime, map, startWith, tap } from 'rxjs';
 import { MOVIES } from '../../data/movies';
 import { IMovie } from '../../models/Movie.interface';
+import { WatchlistService } from '../../services/watchlist';
 
 @Component({
   selector: 'app-movie-list',
@@ -13,7 +14,8 @@ import { IMovie } from '../../models/Movie.interface';
 })
 export class MovieListComponent {
   private readonly router = inject(Router);
-  private readonly destroy = inject(DestroyRef);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly watchlistService = inject(WatchlistService);
 
   protected readonly movies = MOVIES;
   protected readonly filterField = new FormControl('');
@@ -51,7 +53,7 @@ export class MovieListComponent {
   private setFilteredMovies(): void {
     this.filteredMovies$ = this.filterField.valueChanges.pipe(
       tap(() => (this.searchingMovies = true)),
-      takeUntilDestroyed(this.destroy),
+      takeUntilDestroyed(this.destroyRef),
       startWith(''),
       debounceTime(500),
       map((value) => this.filterMovies(value as string)),

@@ -1,5 +1,6 @@
 import { Location } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { Component, DestroyRef, inject } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { MatDialog } from '@angular/material/dialog';
 import { TrailerDialogComponent } from '../../components/trailer-dialog';
 import { IMovie } from '../../models/Movie.interface';
@@ -11,15 +12,21 @@ import { WatchlistService } from '../../services/watchlist';
   styleUrl: './movie-details.component.scss',
 })
 export class MovieDetailsComponent {
-  private readonly matDialog = inject(MatDialog);
-  private readonly watchlistService = inject(WatchlistService);
   private readonly location = inject(Location);
+  private readonly matDialog = inject(MatDialog);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly watchlistService = inject(WatchlistService);
 
   protected loading!: boolean;
+  protected savingOrDeletingInProgress$ = this.watchlistService.loading$;
+  protected isOnWatchlist!: boolean;
   protected movie = this.location.getState() as IMovie;
+  protected storedMovies$ = this.watchlistService.movies$;
 
   constructor() {
     this.loading = true;
+
+    this.setIsOnWatchlist();
   }
 
   onOpenTralerModal(trailerLink: string): void {
@@ -29,26 +36,30 @@ export class MovieDetailsComponent {
     });
   }
 
-  getMovieByKey(key: string): IMovie {
-    return this.watchlistService.getMovieByKey('prime-videos');
-  }
-
-  removeMovieByKey(key: string): void {
-    this.watchlistService.removeItem(key);
-  }
-
-  addMovieToWatchList(movie: IMovie): void {
-    const storedMovie = this.getMovieByKey(movie.key);
-
-    if (storedMovie) {
-      this.removeMovieByKey(movie.key);
+  onHandleWatchlist(movie: IMovie): void {
+    if (this.isOnWatchlist) {
+      this.removeFromWatchlist(movie);
       return;
     }
 
-    movie.onWatchlist = true;
-    const movieString = JSON.stringify(movie);
-    console.log(movieString);
+    this.addMovieToWatchList(movie);
+  }
 
-    localStorage.setItem('prime-movies', movieString);
+  private addMovieToWatchList(movie: IMovie): void {
+    this.watchlistService.addMovie(movie);
+  }
+
+  private removeFromWatchlist(movie: IMovie): void {
+    this.watchlistService.deleteMovie(movie.key);
+  }
+
+  private setIsOnWatchlist(): void {
+    this.storedMovies$
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe((movies) => {
+        this.isOnWatchlist = movies.some(
+          (movie) => movie.key === this.movie.key
+        );
+      });
   }
 }

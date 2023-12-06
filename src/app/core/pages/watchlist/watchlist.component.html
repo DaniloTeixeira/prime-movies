@@ -1,17 +1,28 @@
-<div class="movies-container text-zinc-100 pb-5 pl-5">
-    <h1 class="text-5xl font-bold text-red-600 pt-5 pl-10 pb-10">My list</h1>
-    <div class="relative w-[300px] pl-10" *ngFor="let movie of storedMovies">
-        <img (load)="loading = false" class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800"
-            [src]="movie.thumbnail" [alt]="movie.alt">
-        <div class="absolute top-[-10px] right-[-50px]
-        ">
-            <button mat-mini-fab color="accent" type="button" matTooltip="Remove from watchlist"
-                (click)="removeFromWatchlist(movie)">
-                <mat-icon class="font-bold text-green-600">
-                    {{ movie.onWatchlist ? 'done' : 'add' }}
-                </mat-icon>
-            </button>
+<div *ngIf="(storedMovies$ | async)?.length; else noContent" class="movies-container text-zinc-100 pb-5 lg:pl-5">
+    <div class="flex justify-center md:justify-between items-center flex-wrap gap-5 px-10">
+        <h1 class="text-5xl font-bold text-red-600 pt-5 pb-10">My list</h1>
+        <button class="mb-5 md:m-0" mat-stroked-button color="warn" (click)="clearWatchlist()">Clear
+            watchlist</button>
+    </div>
+    <div class="flex gap-10 mx-5 flex-wrap justify-center md:justify-start">
+        <div class="relative w-[300px] md:pl-10" *ngFor="let movie of (storedMovies$ | async)">
+            <img class="min-w-[300px] min-h-full rounded-xl border-2 border-zinc-800" [src]="movie.thumbnail"
+                [alt]="movie.alt">
+            <div class="absolute top-[-10px] md:left-[30px] left-[-10px]
+                ">
+                <button mat-mini-fab color="warn" type="button" matTooltip="Remove from watchlist"
+                    (click)="removeFromWatchlist(movie)">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </div>
         </div>
     </div>
 
-    <app-loader *ngIf="loading" />
+</div>
+
+<ng-template #noContent>
+    <h1 class="movies-container text-center text-lg text-zinc-100 pt-10">Your watchlist is empty.</h1>
+</ng-template>
+
+
+<app-loader *ngIf="loading$ | async" />

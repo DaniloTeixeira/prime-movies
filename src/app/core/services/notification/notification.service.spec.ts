@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { RouterEventService } from './router-event.service';
+import { NotificationService } from './notification.service';
 
-describe('RouterEventService', () => {
-  let service: RouterEventService;
+describe('NotificationService', () => {
+  let service: NotificationService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(RouterEventService);
+    service = TestBed.inject(NotificationService);
   });
 
   it('should be created', () => {
