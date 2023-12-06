@@ -1,8 +1,15 @@
-<div *ngIf="(storedMovies$ | async)?.length; else noContent" class="movies-container text-zinc-100 pb-5 lg:pl-5">
-    <div class="flex justify-center md:justify-between items-center flex-wrap gap-5 px-5">
-        <h1 class="text-5xl font-bold text-red-600 pt-5 pb-10">My list</h1>
-        <button class="mb-5 md:m-0" mat-stroked-button color="warn" (click)="clearWatchlist()">Clear
-            watchlist</button>
+<div *ngIf="(storedMovies$ | async)?.length; else noContent" class="movies-container text-zinc-100 pb-5">
+
+    <div class="flex justify-center items-center flex-wrap gap-5 px-10">
+        <div class="flex gap-10 items-center justify-center md:justify-between flex-wrap w-full lg:pr-5 mb-10">
+            <div class="pt-5">
+                <h1 class="text-5xl font-bold text-red-600">My watchlist</h1>
+                <h2 class="text-zinc-100">Manage your added watchlist movies</h2>
+            </div>
+            <button class="w-[300px] md:w-auto" mat-stroked-button color="warn" (click)="clearWatchlist()">
+                Clear watchlist
+            </button>
+        </div>
     </div>
     <div class="flex gap-10 mx-5 flex-wrap justify-center md:justify-start">
         <div class="relative w-[300px]" *ngFor="let movie of (storedMovies$ | async)">

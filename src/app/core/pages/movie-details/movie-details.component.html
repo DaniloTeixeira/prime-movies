@@ -1,6 +1,10 @@
 <div class="movies-container">
-    <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 p-10">
-        <h1 class="min-[1280px]:hidden text-5xl font-bold text-red-600 -mb-4">{{ movie.title }}</h1>
+    <div class="p-5 pl-10 text-center sm:text-start">
+        <h1 class="text-5xl font-bold text-red-600">Movie details</h1>
+        <h2 class="text-zinc-100">Check details of the selected movie</h2>
+    </div>
+
+    <section class="flex flex-col items-center sm:items-start xl:flex-row gap-10 py-5 px-10">
         <div class="relative w-[300px]">
             <img (load)="loading = false" class="min-w-[300px] min-h-full rounded-lg border-2 border-zinc-800"
                 [src]="movie.thumbnail" [alt]="movie.alt">
@@ -12,7 +16,7 @@
         </div>
 
         <div class="flex flex-col gap-7 text-zinc-400">
-            <h1 class="max-[1279px]:hidden text-5xl font-bold text-red-600">{{ movie.title }}</h1>
+            <h1 class="max-[1279px]:hidden text-4xl font-bold text-red-600">{{ movie.title }}</h1>
 
             <p class="max-w-lg text-zinc-100">{{ movie.description }}</p>
 
