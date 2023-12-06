@@ -9,7 +9,8 @@
 </div>
 
 <div class="relative" *ngIf="shouldScrollToTopIcon">
-    <button class="fixed bottom-10 right-10" mat-fab color="primary" (click)="onScrollToTop()">
-        <mat-icon class="text-white">arrow_upward</mat-icon>
+    <button class="fixed flex justify-center items-center bottom-10 right-10 backdrop-blur-3xl h-12 w-12 rounded-full"
+        (click)="onScrollToTop()">
+        <mat-icon class="text-white hover:text-red-500 transition ease-in-out">arrow_upward</mat-icon>
     </button>
 </div>

@@ -14,7 +14,7 @@
             </mat-form-field>
         </form>
 
-        <h1 class="text-center text-lg mt-10" *ngIf="showNoMoviesFoundMessage">No movies found.</h1>
+        <h1 class="text-center text-2xl mt-20 text-zinc-300" *ngIf="showNoMoviesFoundMessage">No movies found.</h1>
 
         <div class="flex justify-center sm:justify-start flex-wrap items-end gap-10 mx-5">
             <div class="w-[300px]" *ngFor="let movie of (filteredMovies$ | async); index as i">
@@ -22,7 +22,7 @@
                     <div class="relative">
 
                         <div
-                            class="absolute pt-1 top-0.5 left-0.5 right-0.5 z-10 text-center text-white rounded-tl-md rounded-tr-md backdrop-blur-lg ">
+                            class="absolute pt-1 top-0.5 left-0.5 right-0.5 z-10 text-center text-white rounded-tl-md rounded-tr-md backdrop-blur-lg">
                             <h1 class="bottom-0 text-md pl-2 font-medium mb-2">{{ movie.title }}</h1>
                         </div>
 

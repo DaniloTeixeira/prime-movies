@@ -7,12 +7,4 @@ import { Component, Input } from '@angular/core';
 })
 export class NavComponent {
   @Input({ required: true }) isMovieListPage!: boolean;
-
-  get labelButton(): string {
-    return this.isMovieListPage ? 'Home' : 'Movie List';
-  }
-
-  get path(): string {
-    return this.isMovieListPage ? '/movies' : '/movies/list';
-  }
 }
