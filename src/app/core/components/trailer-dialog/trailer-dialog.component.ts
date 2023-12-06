@@ -8,8 +8,8 @@ import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
   styleUrls: ['./trailer-dialog.component.scss']
 })
 export class TrailerDialogComponent {
-  private sanitizer = inject(DomSanitizer);
-  private matDialogRef =
+  private readonly sanitizer = inject(DomSanitizer);
+  private readonly matDialogRef =
     inject<MatDialogRef<TrailerDialogComponent>>(MatDialogRef);
 
   protected safeTrailerLink!: SafeResourceUrl;
